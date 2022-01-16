@@ -21,7 +21,7 @@ EOF
 
 
 resource "aws_iam_policy" "iam_for_lambda_pj" {
-  name        = "ProjectAWSLambdaBasicExecutionRolePolicy"
+  name        = "ProjectAWSLambdaExecutionRolePolicy"
   path        = "/"
   description = "Provides write permissions to CloudWatch Logs and S3 buckets"
 
