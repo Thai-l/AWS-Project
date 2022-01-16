@@ -1,5 +1,5 @@
-resource "aws_iam_role" "iam_for_lambda" {
-  name = "iam_for_lambda"
+resource "aws_iam_role" "iam_for_lambda_pj" {
+  name = "iam_for_lambda_pj"
 
   assume_role_policy = <<EOF
 {
@@ -20,7 +20,7 @@ EOF
 
 
 
-resource "aws_iam_policy" "iam_for_lambda" {
+resource "aws_iam_policy" "iam_for_lambda_pj" {
   name        = "ProjectAWSLambdaBasicExecutionRolePolicy"
   path        = "/"
   description = "Provides write permissions to CloudWatch Logs and S3 buckets"
@@ -52,6 +52,6 @@ EOF
 
 
 resource "aws_iam_role_policy_attachment" "lambda_attach" {
-  role       = aws_iam_role.iam_for_lambda.name
-  policy_arn = aws_iam_policy.iam_for_lambda.arn
+  role       = aws_iam_role.iam_for_lambda_pj.name
+  policy_arn = aws_iam_policy.iam_for_lambda_pj.arn
 }
