@@ -33,7 +33,7 @@ create_order_item = '''CREATE TABLE IF NOT EXISTS olist_order_items_dataset(
     shipping_limit_date DATETIME,
     price FLOAT,
     freight_value FLOAT,
-    duplicates VARCHAR(100),
+    duplicates VARCHAR(100)
 )'''
 
 create_order_payments = '''CREATE TABLE IF NOT EXISTS olist_order_payments_dataset(
@@ -43,7 +43,7 @@ create_order_payments = '''CREATE TABLE IF NOT EXISTS olist_order_payments_datas
     payment_type VARCHAR(100),
     payment_installments INT,
     payment_value FLOAT,
-    duplicates VARCHAR(100),
+    duplicates VARCHAR(100)
 )'''
 
 create_order_reviews = '''CREATE TABLE IF NOT EXISTS olist_order_reviews_dataset(
@@ -159,6 +159,7 @@ class DbQuery:
             df = df.drop_duplicates(subset='duplicates')
             return "duplicates"
         if table == 'olist_order_payments_dataset':
+            df['payment_sequential'] = df['payment_sequential'].apply(str)[0]
             df['duplicates'] = df['order_id'] + df['payment_sequential']
             return "duplicates"
 
