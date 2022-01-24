@@ -3,7 +3,7 @@ import os
 import boto3
 import logging
 import pandas as pd
-from db.query import DbHelper 
+from db.query import DbQuery 
 
 logger = logging.getLogger('export_process_files')
 logger.setLevel(logging.INFO)
@@ -27,7 +27,7 @@ def lambda_handler(event, _):
 
     logger.info("Starting lambda...")
     s3_conn = bucket_connection()
-    queries = DbHelper()
+    queries = DbQuery()
 
     try:
         for record in event['Records']:
